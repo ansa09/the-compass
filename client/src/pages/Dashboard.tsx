@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { partnersApi } from '../services/api';
 import { Partner } from '../types';
@@ -10,7 +10,6 @@ export default function Dashboard() {
   const [showAddModal, setShowAddModal] = useState(false);
   const [newPartnerName, setNewPartnerName] = useState('');
   const { user, logout } = useAuth();
-  const navigate = useNavigate();
 
   useEffect(() => {
     loadPartners();

@@ -22,7 +22,7 @@ export const useAuth = create<AuthState>((set) => ({
 
   login: async (email: string, password: string) => {
     try {
-      const response: AuthResponse = await authApi.login({ email, password });
+      const response = await authApi.login({ email, password }) as AuthResponse;
       localStorage.setItem('compass_token', response.token);
       set({ user: response.user, token: response.token, isAuthenticated: true });
     } catch (error) {
@@ -33,7 +33,7 @@ export const useAuth = create<AuthState>((set) => ({
 
   signup: async (email: string, password: string, name?: string) => {
     try {
-      const response: AuthResponse = await authApi.signup({ email, password, name });
+      const response = await authApi.signup({ email, password, name }) as AuthResponse;
       localStorage.setItem('compass_token', response.token);
       set({ user: response.user, token: response.token, isAuthenticated: true });
     } catch (error) {
@@ -55,7 +55,7 @@ export const useAuth = create<AuthState>((set) => ({
     }
 
     try {
-      const response: { user: User } = await authApi.getMe();
+      const response = await authApi.getMe() as { user: User };
       set({ user: response.user, token, isAuthenticated: true, isLoading: false });
     } catch (error) {
       console.error('Failed to refresh user:', error);
