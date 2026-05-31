@@ -42,6 +42,7 @@ async function regenerateAllExplanations() {
 
         // Transform scores to the format expected by AI service
         const criterionScores = scores.map((s) => ({
+          criterionId: s.criterion_id,
           score: s.score,
           criterionName: s.criterion_name,
           tier: s.criterion_tier,
