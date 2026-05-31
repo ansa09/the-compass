@@ -53,7 +53,7 @@ export interface RatingScore {
   criterion_id: number;
   score: number;
   criterion_name: string;
-  criterion_tier: string;
+  criterion_tier: 'dealbreaker' | 'important' | 'nice-to-have';
   created_at: string;
 }
 
